@@ -27,9 +27,11 @@ if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['link
     // viết câu lệnh thêm vào database - bảng wallpaper
     $db = new Database();
     $query = $db->connect();
-    $add = "INSERT INTO wallpaper (title,description,link,view,rate) VALUES ('$title','$des','$link','0','5')";
-    $ketqua = $query->query($add);
-
+    $stmt = $query->prepare("INSERT INTO wallpaper (title,description,link,view,rate) VALUES (?,?,?,?,?)");
+    $i = 5;
+    $z = 0;
+    $stmt->bind_param('sssii', $title, $des, $link, $z, $i);
+    $ketqua = $stmt->execute();
     if ($ketqua) echo 'THEM THANH CONG!!!';
     else echo 'Co loi xay ra';
 
