@@ -16,7 +16,6 @@
 </body>
 
 </html>
-
 <?php
 require 'Database.php';
 
@@ -34,7 +33,6 @@ if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['link
     $ketqua = $stmt->execute();
     if ($ketqua) echo 'THEM THANH CONG!!!';
     else echo 'Co loi xay ra';
-
 } else {
     echo "Vui long nhap day du gia tri";
 }
